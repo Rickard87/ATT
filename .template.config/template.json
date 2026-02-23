@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/template",
+  "author": "Rickard Jansson",
+  "classifications": ["Test"],
+  "tags": {
+    "language": "C#",
+    "type": "project",
+    "framework": "xunit"
+  },
+  "name": "API Test Template (ATT)",
+  "identity": "RickardApps.ATT",
+  "shortName": "att",
+  "sourceName": "ATT",
+  "symbols": {
+    "apiUrl": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__API_URL__",
+      "isRequired": true,
+      "description": "Obligatorisk URL till API"
+    }
+  }
+}
