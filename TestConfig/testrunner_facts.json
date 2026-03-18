@@ -1,0 +1,9 @@
+{
+  "Currency": [
+    "GetAllCurrencies_ResponseStatusIsOK"
+  ],
+  "Tester": [
+    "Test1",
+    "Test2"
+  ]
+}

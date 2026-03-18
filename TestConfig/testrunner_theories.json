@@ -1,0 +1,13 @@
+{
+  "Currency": 
+  {
+    "GetCurrencyById_ResponseStatusIsOK": [
+      [6],
+      [7]
+    ],
+    "GetCurrencyByCurrencyCode_ResponseStatusIsOK": [
+      ["SEK"], 
+      ["JEK"]
+    ]
+  }
+}
