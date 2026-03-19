@@ -1,29 +1,28 @@
+using System;
+using System.Threading.Tasks;
 using Microsoft.Playwright;
 
 namespace ATT;
 
-public class PlaywrightDriver : IDisposable
+public class PlaywrightDriver : IAsyncLifetime
 {
-    private readonly Task<IAPIRequestContext?>? _requestContext = null;
+    private IPlaywright _playwright = null!;
+    public IAPIRequestContext ApiRequestContext { get; private set; } = null!;
 
-    public PlaywrightDriver()
+    public async Task InitializeAsync()
     {
-        _requestContext = CreateAPIContext();
-    }
+        _playwright = await Playwright.CreateAsync();
 
-    public IAPIRequestContext? ApiRequestContext => _requestContext?.GetAwaiter().GetResult();
-
-    private async Task<IAPIRequestContext?> CreateAPIContext()
-    {
-        var playwright = await Playwright.CreateAsync();
-        var requestContext = await playwright.APIRequest.NewContextAsync(
-            new APIRequestNewContextOptions() { BaseURL = AppConfig.BaseURL }
+        ApiRequestContext = await _playwright.APIRequest.NewContextAsync(
+            new APIRequestNewContextOptions { BaseURL = AppConfig.BaseURL }
         );
-        return requestContext;
     }
 
-    public void Dispose()
+    public async Task DisposeAsync()
     {
-        _requestContext?.Dispose();
+        if (ApiRequestContext != null)
+            await ApiRequestContext.DisposeAsync();
+
+        _playwright?.Dispose();
     }
 }
