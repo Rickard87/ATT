@@ -6,7 +6,7 @@ public class EPUsers
 {
     private PlaywrightDriver _playwrightDriver;
 
-    public record UserRecord(int id, string name);
+    public record UserRecord(int id, string name, string username, string email);
 
     public EPUsers(PlaywrightDriver playwrightDriver)
     {
@@ -15,7 +15,7 @@ public class EPUsers
 
     public async Task<(IAPIResponse, UserRecord)> GetUser(int userId)
     {
-        var response = await _playwrightDriver.ApiRequestContext?.GetAsync($"/Admin/user{userId}")!;
+        var response = await _playwrightDriver.ApiRequestContext.GetAsync($"/users/{userId}");
         var data =
             await response.JsonAsync<UserRecord>()
             ?? throw new InvalidOperationException("Data was null here!");

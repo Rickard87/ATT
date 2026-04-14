@@ -14,5 +14,7 @@ public static class AppConfig
 
     public static string BaseURL =>
         _config["TestSettings:BaseURL"]
-        ?? throw new InvalidOperationException("BASE_URL must be set as an Environment Variable!");
+        ?? throw new InvalidOperationException(
+            "TestSettings:BaseURL is not configured in appsettings.json"
+        );
 }

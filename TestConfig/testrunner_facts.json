@@ -1,9 +1,8 @@
 {
-  "Currency": [
-    "GetAllCurrencies_ResponseStatusIsOK"
+  "UsersTests": [
+    "GetUser_ResponseStatusIsOK"
   ],
-  "Tester": [
-    "Test1",
-    "Test2"
+  "SmokeTests": [
+    "GetUser_SmokeTest"
   ]
 }

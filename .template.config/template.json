@@ -15,7 +15,7 @@
     "apiUrl": {
       "type": "parameter",
       "datatype": "string",
-      "replaces": "__API_URL__",
+      "replaces": "https://jsonplaceholder.typicode.com",
       "isRequired": true,
       "description": "Obligatorisk URL till API"
     }
